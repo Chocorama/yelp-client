@@ -2,9 +2,9 @@ import React from "react";
 
 const AddRestaurant = () => {
   return (
-    <div classname="mb-4">
+    <div className="mb-4">
       <form>
-        <div className="conatiner">
+        <div className="container">
           <div className="row">
             <div className="col">
               <input type="text" className="form-control" placeholder="name" />

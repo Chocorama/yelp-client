@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import RestaurantFinder from "../api/RestaurantFinder";
 
 const RestaurantList = () => {
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const response = await RestaurantFinder.get("/");
-      console.log(response);
+      (async function fetchData() {
+        const response = await RestaurantFinder("/");
+        console.log(response);
+      })();
     } catch (error) {
       console.log(error);
     }

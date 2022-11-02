@@ -25,7 +25,7 @@ const AddRestaurant = () => {
                 <option value={4}>$$$$</option>
                 <option value={5}>$$$$$</option>
               </select>
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 Primary
               </button>
             </div>

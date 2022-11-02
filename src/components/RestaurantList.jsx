@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import RestaurantFinder from "../api/RestaurantFinder";
+import { useRestaurantContext } from "../context/RestaurantsContext";
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
+  const { restaurants, setRestaurants } = useRestaurantContext();
+
+  console.log(restaurants);
+
   useEffect(() => {
     try {
       (async function fetchData() {

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 const RestaurantsContext = createContext();
 
@@ -13,4 +13,14 @@ const RestaurantsContextProvider = (props) => {
   );
 };
 
-export { RestaurantsContextProvider, RestaurantsContext };
+const useRestaurantContext = () => {
+  const context = useContext(RestaurantsContext);
+
+  if (!context) {
+    throw new Error("Couldnt find context with type");
+  }
+
+  return context;
+};
+
+export { RestaurantsContextProvider, useRestaurantContext };

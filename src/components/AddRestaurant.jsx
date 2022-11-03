@@ -4,13 +4,19 @@ import RestaurantFinder from "../api/RestaurantFinder";
 const AddRestaurant = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [price_range, setPriceRange] = useState("Price Range");
+  const [priceRange, setPriceRange] = useState("Price Range");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      RestaurantFinder.post("/");
+      const response = await RestaurantFinder.post("/", {
+        name,
+        location,
+        price_range: priceRange,
+      });
+
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +47,7 @@ const AddRestaurant = () => {
             </div>
             <div className="col">
               <select
-                value={price_range}
+                value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
                 className="custom-select my-1 mx-2"
               >
@@ -57,7 +63,7 @@ const AddRestaurant = () => {
                 type="submit"
                 className="btn btn-primary"
               >
-                Primary
+                Add
               </button>
             </div>
           </div>

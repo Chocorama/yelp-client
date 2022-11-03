@@ -11,12 +11,12 @@ const RestaurantList = (props) => {
     try {
       (async function fetchData() {
         const response = await RestaurantFinder("/");
-        console.log(response);
+        setRestaurants(response.data.data.restaurants);
       })();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [setRestaurants]);
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
@@ -31,7 +31,21 @@ const RestaurantList = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {restaurants.map((restaurant, i) => (
+            <tr key={i}>
+              <td>{restaurant.name}</td>
+              <td>{restaurant.location}</td>
+              <td>{"$".repeat(restaurant.price_range)}</td>
+              <td>reviews</td>
+              <td>
+                <button className="btn btn-warning">Update</button>
+              </td>
+              <td>
+                <button className="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          ))}
+          {/* <tr>
             <td>mcdonalds</td>
             <td>new york</td>
             <td>$$</td>
@@ -54,7 +68,7 @@ const RestaurantList = (props) => {
             <td>
               <button className="btn btn-danger">Delete</button>
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>

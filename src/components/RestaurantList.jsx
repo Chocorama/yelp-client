@@ -5,8 +5,6 @@ import { useRestaurantContext } from "../context/RestaurantsContext";
 const RestaurantList = (props) => {
   const { restaurants, setRestaurants } = useRestaurantContext();
 
-  console.log(restaurants);
-
   useEffect(() => {
     try {
       (async function fetchData() {

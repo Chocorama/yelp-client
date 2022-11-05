@@ -18,7 +18,8 @@ const RestaurantList = (props) => {
     }
   }, [setRestaurants]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
     try {
       const response = await RestaurantFinder.delete(`/${id}`);
 
@@ -34,7 +35,8 @@ const RestaurantList = (props) => {
     }
   };
 
-  const handleUpdate = (id) => {
+  const handleUpdate = (e, id) => {
+    e.stopPropagation();
     history.push(`/restaurants/${id}/update`);
   };
 
@@ -68,7 +70,7 @@ const RestaurantList = (props) => {
                 <td>reviews</td>
                 <td>
                   <button
-                    onClick={() => handleUpdate(restaurant.id)}
+                    onClick={(e) => handleUpdate(e, restaurant.id)}
                     className="btn btn-warning"
                   >
                     Update
@@ -76,7 +78,7 @@ const RestaurantList = (props) => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handleDelete(restaurant.id)}
+                    onClick={(e) => handleDelete(e, restaurant.id)}
                     className="btn btn-danger"
                   >
                     Delete

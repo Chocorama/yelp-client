@@ -39,7 +39,7 @@ const RestaurantList = (props) => {
   };
 
   const handleRestaurantSelect = (restaurantId) => {
-    console.log(restaurantId);
+    history.push(`/restaurants/${restaurantId}`);
   };
 
   return (

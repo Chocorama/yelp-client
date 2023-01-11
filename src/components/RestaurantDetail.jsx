@@ -13,8 +13,8 @@ const RestaurantDetail = () => {
     try {
       (async () => {
         const response = await RestaurantFinder.get(`/${id}`);
-        setSelectedRestaurant(response.data.data.restaurant);
-        //   console.log(response.data.data.restaurant);
+
+        setSelectedRestaurant(response.data.data);
       })();
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ const RestaurantDetail = () => {
       {selectedRestaurant && (
         <>
           <div className="mt-3">
-            <Reviews />
+            <Reviews reviews={selectedRestaurant.reviews} />
           </div>
           <AddReview />
         </>

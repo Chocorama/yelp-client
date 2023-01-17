@@ -1,13 +1,41 @@
-import React from "react";
-import RestaurantDetail from "../components/RestaurantDetail";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import RestaurantFinder from "../api/RestaurantFinder";
+import { useRestaurantContext } from "../context/RestaurantsContext";
+import AddReview from "../components/AddReview";
+import Reviews from "../components/Reviews";
 
-const RestaurantDetailPage = () => {
+const RestaurantDetail = () => {
+  const { id } = useParams();
+  const { selectedRestaurant, setSelectedRestaurant } = useRestaurantContext();
+
+  useEffect(() => {
+    try {
+      (async () => {
+        const response = await RestaurantFinder.get(`/${id}`);
+
+        console.log(response);
+
+        setSelectedRestaurant(response.data.data);
+      })();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [id, setSelectedRestaurant]);
+
   return (
     <div>
-      <h1 className="text-center">Details</h1>
-      <RestaurantDetail />
+      {selectedRestaurant && (
+        <>
+          <h1>{selectedRestaurant.restaurant.name}</h1>
+          <div className="mt-3">
+            <Reviews reviews={selectedRestaurant.reviews} />
+          </div>
+          <AddReview />
+        </>
+      )}
     </div>
   );
 };
 
-export default RestaurantDetailPage;
+export default RestaurantDetail;

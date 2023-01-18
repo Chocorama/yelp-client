@@ -7,15 +7,17 @@ const Reviews = ({ reviews }) => {
   return (
     <div className="row row-cols-3 mb-2">
       {reviews.map(({ id, name, review, rating }) => (
-        <div className="container">
+        <div style={{ minWidth: "240px" }} className="container">
           <div className="row">
-            <div className="card">
+            <div className="card bg-primary text-white">
+              <div className="card-header">
+                <span>{name}</span>
+                <span>
+                  <StarRating rating={rating} />
+                </span>
+              </div>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <p className="card-text">{review}</p>
               </div>
             </div>
           </div>
@@ -26,3 +28,21 @@ const Reviews = ({ reviews }) => {
 };
 
 export default Reviews;
+
+{
+  /* <div
+          key={id}
+          style={{ maxWidth: "30%" }}
+          className="card text-white bg-primary mb-3 mr-4"
+        >
+          <div className="card-header d-flex justify-content-between">
+            <span>{name}</span>
+            <span>
+              <StarRating rating={rating} />
+            </span>
+          </div>
+          <div className="card-body">
+            <p className="card-text">{review}</p>
+          </div>
+        </div> */
+}

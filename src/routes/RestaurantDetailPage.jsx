@@ -33,7 +33,7 @@ const RestaurantDetail = () => {
           <div style={{ maxWidth: "80%", margin: "auto" }} className="mt-3">
             <Reviews reviews={selectedRestaurant.reviews} />
           </div>
-          <AddReview />
+          <AddReview checkLength={selectedRestaurant?.reviews?.length} />
         </>
       )}
     </div>

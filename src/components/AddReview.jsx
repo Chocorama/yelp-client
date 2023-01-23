@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import RestaurantFinder from "../api/RestaurantFinder";
 import { useParams } from "react-router-dom";
 
-const AddReview = () => {
+const AddReview = ({ checkLength }) => {
   const { id } = useParams();
   // const [name, setName] = useState("");
   // const [reviewText, setReviewText] = useState("");
@@ -17,14 +17,14 @@ const AddReview = () => {
   const handleSubmitReview = async (e) => {
     e.preventDefault();
 
-    console.log(id);
-
-    await RestaurantFinder.post(`/${id}/add-review`, {
+    const response = await RestaurantFinder.post(`/${id}/add-review`, {
       ...reviewForm,
     });
+
+    console.log("response", response);
   };
 
-  return (
+  const revealIfReviews = checkLength ? (
     <div className="mb-2">
       <form action="">
         <div className="form-row">
@@ -81,7 +81,11 @@ const AddReview = () => {
         </button>
       </form>
     </div>
+  ) : (
+    <div>Not reviewed yet</div>
   );
+
+  return revealIfReviews;
 };
 
 export default AddReview;

@@ -4,6 +4,8 @@ const RestaurantsContext = createContext();
 
 const RestaurantsContextProvider = (props) => {
   const [restaurants, setRestaurants] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const addRestaurants = (restaurant) => {
@@ -15,6 +17,8 @@ const RestaurantsContextProvider = (props) => {
       value={{
         restaurants,
         setRestaurants,
+        reviews,
+        setReviews,
         addRestaurants,
         selectedRestaurant,
         setSelectedRestaurant,

@@ -7,21 +7,22 @@ import Reviews from "../components/Reviews";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
-  const { selectedRestaurant, setSelectedRestaurant } = useRestaurantContext();
+  const { selectedRestaurant, setSelectedRestaurant, setReviews, reviews } =
+    useRestaurantContext();
 
   useEffect(() => {
     try {
       (async () => {
         const response = await RestaurantFinder.get(`/${id}`);
 
-        console.log(response);
+        setReviews(response);
 
         setSelectedRestaurant(response.data.data);
       })();
     } catch (error) {
       console.log(error);
     }
-  }, [id, setSelectedRestaurant]);
+  }, [id, setSelectedRestaurant, setReviews, reviews]);
 
   return (
     <div>

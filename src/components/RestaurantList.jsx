@@ -61,6 +61,7 @@ const RestaurantList = (props) => {
           {restaurants &&
             restaurants.map((restaurant) => (
               <tr
+                style={{ cursor: "pointer" }}
                 onClick={() => handleRestaurantSelect(restaurant.id)}
                 key={restaurant.id}
               >

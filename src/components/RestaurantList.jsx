@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import RestaurantFinder from "../api/RestaurantFinder";
 import { useRestaurantContext } from "../context/RestaurantsContext";
 import { useHistory } from "react-router-dom";
+import StarRating from "../components/StarRating";
 
 const RestaurantList = (props) => {
   const { restaurants, setRestaurants } = useRestaurantContext();
@@ -68,7 +69,7 @@ const RestaurantList = (props) => {
                 <td>{restaurant.name}</td>
                 <td>{restaurant.location}</td>
                 <td>{"$".repeat(restaurant.price_range)}</td>
-                <td>reviews</td>
+                <td>{<StarRating rating={restaurant.average_rating} />}</td>
                 <td>
                   <button
                     onClick={(e) => handleUpdate(e, restaurant.id)}

@@ -23,6 +23,7 @@ const RestaurantDetail = () => {
       console.log(error);
     }
   }, [id, setSelectedRestaurant, setReviews, reviews]);
+  // TODO: rerender component on submit, had it before but adding reviews kept rerendering a million times
 
   return (
     <div>

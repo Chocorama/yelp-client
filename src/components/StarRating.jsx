@@ -18,7 +18,7 @@ const StarRating = ({ rating }) => {
     }
   }
 
-  return <div>{stars}</div>;
+  return <div style={{ display: "inline" }}>{stars}</div>;
 };
 
 export default StarRating;

@@ -45,6 +45,15 @@ const RestaurantList = (props) => {
     history.push(`/restaurants/${restaurantId}`);
   };
 
+  const renderRating = (restaurant) => (
+    <>
+      <StarRating rating={restaurant.average_rating} />
+      {restaurant.count && (
+        <span className="text-warning ms-2">"{restaurant.count}"</span>
+      )}
+    </>
+  );
+
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
@@ -69,7 +78,7 @@ const RestaurantList = (props) => {
                 <td>{restaurant.name}</td>
                 <td>{restaurant.location}</td>
                 <td>{"$".repeat(restaurant.price_range)}</td>
-                <td>{<StarRating rating={restaurant.average_rating} />}</td>
+                <td>{renderRating(restaurant)}</td>
                 <td>
                   <button
                     onClick={(e) => handleUpdate(e, restaurant.id)}

@@ -17,10 +17,6 @@ const AddReview = ({ checkLength }) => {
   const handleSubmitReview = async (e) => {
     e.preventDefault();
 
-    console.log("submitted", reviewForm);
-    // const response = await RestaurantFinder.post(`/${id}/add-review`, {
-    //   ...reviewForm,
-    // });
     // TODO: validate for rating being null or string dont let it be submitted as empty string, thats where error was coming in
     await RestaurantFinder.post(`/${id}/add-review`, {
       ...reviewForm,

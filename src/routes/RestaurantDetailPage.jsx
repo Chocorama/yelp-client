@@ -8,22 +8,19 @@ import StarRating from "../components/StarRating";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
-  const { selectedRestaurant, setSelectedRestaurant, setReviews, reviews } =
-    useRestaurantContext();
+  const { selectedRestaurant, setSelectedRestaurant } = useRestaurantContext();
 
   useEffect(() => {
     try {
       (async () => {
         const response = await RestaurantFinder.get(`/${id}`);
 
-        setReviews(response);
-
         setSelectedRestaurant(response.data.data);
       })();
     } catch (error) {
       console.log(error);
     }
-  }, [id, setSelectedRestaurant, setReviews]);
+  }, [id, setSelectedRestaurant]);
 
   // TODO: rerender component on submit, had it before but adding reviews kept rerendering a million times
 

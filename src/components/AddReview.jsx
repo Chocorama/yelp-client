@@ -21,7 +21,13 @@ const AddReview = ({ checkLength }) => {
     // const response = await RestaurantFinder.post(`/${id}/add-review`, {
     //   ...reviewForm,
     // });
+    // TODO: validate for rating being null or string dont let it be submitted as empty string, thats where error was coming in
+    await RestaurantFinder.post(`/${id}/add-review`, {
+      ...reviewForm,
+    });
   };
+
+  // TODO: add a delete review function
 
   const revealIfReviews = checkLength ? (
     <div className="mb-2">

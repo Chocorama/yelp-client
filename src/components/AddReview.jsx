@@ -17,11 +17,10 @@ const AddReview = ({ checkLength }) => {
   const handleSubmitReview = async (e) => {
     e.preventDefault();
 
-    const response = await RestaurantFinder.post(`/${id}/add-review`, {
-      ...reviewForm,
-    });
-
-    console.log("response", response);
+    console.log("submitted", reviewForm);
+    // const response = await RestaurantFinder.post(`/${id}/add-review`, {
+    //   ...reviewForm,
+    // });
   };
 
   const revealIfReviews = checkLength ? (
@@ -44,6 +43,7 @@ const AddReview = ({ checkLength }) => {
           <div className="form-group col-4">
             <label htmlFor="rating">rating</label>
             <select
+              name="rating"
               value={reviewForm.rating}
               onChange={(e) =>
                 setReviewForm({ ...reviewForm, rating: e.target.value })
@@ -51,7 +51,7 @@ const AddReview = ({ checkLength }) => {
               id="rating"
               className="custom-select"
             >
-              <option disabled>Rating</option>
+              <option value="">rating</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

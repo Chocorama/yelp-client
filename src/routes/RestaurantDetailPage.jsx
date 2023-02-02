@@ -22,7 +22,7 @@ const RestaurantDetail = () => {
     }
   }, [id, setSelectedRestaurant]);
 
-  // TODO: rerender component on submit, had it before but adding reviews kept rerendering a million times. we can do this by setting state in this page in a function with false as default and pass down as props to addReview
+  // TODO: rerender reviews on submit, had it before but adding reviews kept rerendering a million times. we can do this by setting state in this page in a function with false as default and pass down as props to addReview
 
   return (
     <div>

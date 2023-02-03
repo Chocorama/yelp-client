@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantFinder from "../api/RestaurantFinder";
 import { useRestaurantContext } from "../context/RestaurantsContext";
@@ -7,6 +7,7 @@ import Reviews from "../components/Reviews";
 import StarRating from "../components/StarRating";
 
 const RestaurantDetail = () => {
+  const [addReview, setAddReview] = useState({});
   const { id } = useParams();
   const { selectedRestaurant, setSelectedRestaurant } = useRestaurantContext();
 
@@ -20,9 +21,7 @@ const RestaurantDetail = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [id, setSelectedRestaurant]);
-
-  // TODO: rerender reviews on submit, had it before but adding reviews kept rerendering a million times. we can do this by setting state in this page in a function with false as default and pass down as props to addReview
+  }, [id, setSelectedRestaurant, addReview, setAddReview]);
 
   return (
     <div>
@@ -41,7 +40,10 @@ const RestaurantDetail = () => {
           <div style={{ maxWidth: "80%", margin: "auto" }} className="mt-3">
             <Reviews reviews={selectedRestaurant.reviews} />
           </div>
-          <AddReview checkLength={selectedRestaurant?.reviews?.length} />
+          <AddReview
+            addReview={setAddReview}
+            checkLength={selectedRestaurant?.reviews?.length}
+          />
         </>
       )}
     </div>

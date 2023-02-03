@@ -3,7 +3,7 @@ import RestaurantFinder from "../api/RestaurantFinder";
 import { useParams } from "react-router-dom";
 
 // TODO: change look of addreview
-const AddReview = ({ checkLength }) => {
+const AddReview = ({ addReview, checkLength }) => {
   const { id } = useParams();
   // const [name, setName] = useState("");
   // const [reviewText, setReviewText] = useState("");
@@ -20,11 +20,13 @@ const AddReview = ({ checkLength }) => {
 
     // TODO: validate for rating being null or string dont let it be submitted as empty string, thats where error was coming in
 
-    console.log(reviewForm);
+    addReview(reviewForm);
 
     await RestaurantFinder.post(`/${id}/add-review`, {
       ...reviewForm,
     });
+
+    setReviewForm({ name: "", reviewText: "", rating: "" });
   };
 
   // TODO: add a delete review function

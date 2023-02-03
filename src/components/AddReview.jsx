@@ -29,7 +29,7 @@ const AddReview = ({ checkLength }) => {
 
   // TODO: add a delete review function
 
-  const revealIfReviews = checkLength ? (
+  return (
     <div className="mb-2">
       <form action="">
         <div className="form-row">
@@ -88,11 +88,7 @@ const AddReview = ({ checkLength }) => {
         </button>
       </form>
     </div>
-  ) : (
-    <div>Not reviewed yet</div>
   );
-
-  return revealIfReviews;
 };
 
 export default AddReview;

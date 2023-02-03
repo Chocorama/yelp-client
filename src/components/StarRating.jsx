@@ -7,7 +7,6 @@ const StarRating = ({ rating }) => {
     if (rating === null) {
       return "No reviews yet!";
     } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
-      console.log(Math.ceil(rating));
       stars.push(
         <i key={i} className="fa-regular fa-star-half-stroke text-warning"></i>
       );

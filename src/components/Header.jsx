@@ -1,11 +1,10 @@
 import React from "react";
+import NavBar from "./NavBar";
 
 const Header = () => {
   return (
-    <div>
-      <h1 className="font-weight-light display-1 text-center">
-        Restaurant Finder
-      </h1>
+    <div className="display-1 mb-4">
+      <NavBar />
     </div>
   );
 };
